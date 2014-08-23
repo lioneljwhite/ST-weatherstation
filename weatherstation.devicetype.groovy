@@ -1,5 +1,4 @@
 /**
- /**
  *  Weather Station
  *
  *  Author: yracine66@gmail.com
@@ -170,7 +169,7 @@ def poll() {
 
     // UV Index
     log.debug( "UV Index: ${weather.current_observation.UV}" )
-    sendEvent( name: 'uv_index', value: weather.current_observation.UV )
+    sendEvent( name: 'uv_index', value: weather.current_observation.UV.toString() )
 
     // Forecast
     log.debug( "Forecast: ${weather.current_observation.icon}" )
