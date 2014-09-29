@@ -67,7 +67,7 @@ metadata {
             state "default",  label:'Humidity\n${currentValue}%', unit: "Humidity"
         }
         valueTile("feels_like", "device.feels_like", decoration: "flat",inactiveLabel: false) {
-            state "feels_like", label: 'FeelsLike\n${currentValue}º', unit:"C"
+            state "feels_like", label: 'FeelsLike\n${currentValue}º'
         }
 
         // Second Row
@@ -97,7 +97,7 @@ metadata {
             state "default", label: 'Fcast\n${currentValue}'        
         }
         valueTile("wind_speed", "device.wind_speed", inactiveLabel: false, decoration: "flat",width: 1, height: 1) {
-            state "wind_speed", label: 'W.Speed\n${currentValue}', unit: "km", backgroundColors: [
+            state "wind_speed", label: 'W.Speed\n${currentValue}', backgroundColors: [
                 // Values and colors based on the Beaufort Scale
                 // http://en.wikipedia.org/wiki/Beaufort_scale#Modern_scale
                 [value: 0,  color: "#ffffff"],
@@ -129,7 +129,7 @@ metadata {
             state "false",   label:'Dry',          icon: "st.alarm.water.dry",        backgroundColor:"#99ff99"
         }
         valueTile("precipitation", "device.precipitation", inactiveLabel: false, width: 1, height: 1,decoration: "flat") {
-            state "precipitation", label: 'Precip\n ${currentValue}mm', unit: "mm"
+            state "precipitation", label: 'Precip\n ${currentValue}'
         }
         valueTile("location", "device.location", inactiveLabel: false, decoration: "flat", width: 1, height: 1) {
             state "location", label: 'Location\n${currentValue}', unit: "ZipCode"
@@ -223,7 +223,7 @@ def poll() {
     }
     else {
 
-        sendEvent( name: 'feels_like', value: weather.current_observation.feelslike_f )
+        sendEvent( name: 'feels_like', value: weather.current_observation.feelslike_f,unit: "F" )
     }
     
     // Something that looks like an integer will get converted to an integer
