@@ -175,8 +175,6 @@ def poll() {
     log.debug( "Forecast: ${weather.current_observation.icon}" )
     sendEvent( name: "forecast", value: weather.current_observation.icon )
 
-    // Wind
-    log.debug( "Wind Speed: ${weather.current_observation.wind_mph} mph")
     
         
     def scale = getTemperatureScale()
@@ -184,10 +182,13 @@ def poll() {
 
         float windSpeed=milesToKm(weather.current_observation.wind_mph.toFloat())
         def speedFormat= String.format('%2.1f', windSpeed.round(1))
+        log.debug( "Wind Speed: ${speedFormat} kmh")
         sendEvent( name: "wind_speed", value: speedFormat, unit: "kmh" )
     }
     else {
     
+        // Wind
+        log.debug( "Wind Speed: ${weather.current_observation.wind_mph} mph")
         sendEvent( name: "wind_speed", value: weather.current_observation.wind_mph.toInteger(), unit: "mph" )
     
     }
@@ -196,55 +197,45 @@ def poll() {
     sendEvent( name: "wind_direction", value: weather.current_observation.wind_dir )
     // Set the tiles
 
-    log.debug( "Current Temperature: ${weather.current_observation.temp_f}ºF" )
-    if (scale == 'C') { 
-
-        def currentTemp = String.format('%2.1f', fToC(weather.current_observation.temp_f))
-        sendEvent( name: 'temperature', value: currentTemp, unit: "C")
-    }
-    else {
-        sendEvent( name: 'temperature', value: weather.current_observation.temp_f, unit: "F")
-    }
     
-    // Sending a value to a valueTile REQUIRES an Integer (on Android, for now)
     log.debug( "Relative Humidity: ${weather.current_observation.relative_humidity.tokenize('%')[0].toInteger()}" )
     sendEvent( name: 'humidity', value: weather.current_observation.relative_humidity.tokenize('%')[0].toInteger(),
         unit: "%")
 
-//    log.debug( "Feels Like: ${weather.current_observation.feelslike_f}" )
-    log.debug( "Feels Like: ${weather.current_observation.feelslike_f}" )
     
     if (scale == 'C') { 
      
-        float feelTemp_c = fToC(weather.current_observation.feelslike_f.toFloat())
-
-        def feelTempFormat =  String.format('%2.1f', feelTemp_c.round(1))
+        def currentTempFormat = String.format('%2.1f', fToC(weather.current_observation.temp_f.toFloat()).round(1))
+        def feelTempFormat =  String.format('%2.1f', fToC(weather.current_observation.feelslike_f.toFloat()).round(1))
+        log.debug( "Temperature: ${currentTempFormat}")
+        log.debug( "Feels Like: ${feelTempFormat}")
         sendEvent( name: 'feels_like', value: feelTempFormat, unit: "C")
+        sendEvent( name: 'temperature', value: currentTempFormat, unit: "C")
     }
     else {
 
+        log.debug( "Feels Like: ${weather.current_observation.feelslike_f}" )
+        log.debug( "Temperature: ${weather.current_observation.temp_f}")
         sendEvent( name: 'feels_like', value: weather.current_observation.feelslike_f,unit: "F" )
+        sendEvent( name: 'temperature', value: weather.current_observation.temp_f, unit: "F")
     }
     
-    // Something that looks like an integer will get converted to an integer
     
     log.debug( "Location: ${weather.current_observation.display_location.zip.toString()}" )
     sendEvent( name: 'location', value: weather.current_observation.display_location.zip.toString())
-
-    // Since precip_1hr_in is a string, we need to convert it to a decimal in order to compare it as a number.
-    log.debug( "Precipitation: ${precip}" )
     
+    float precip 
     if (scale == 'C') { 
      
-
-        float precip = inchToMm(weather.current_observation.precip_1hr_in.toFloat())
-        def precipFormat =  String.format('%2.1f', precip.round(1))
-        sendEvent( name: 'precipitation', value: precipFormat, unit: "mm" )
+        precip = inchToMm(weather.current_observation.precip_1hr_in.toFloat())
+        log.debug( "precipitation: ${precip.round(1).toString()}")
+        sendEvent( name: 'precipitation', value: precip.round(1).toString(), unit: "mm" )
     }
     else {
-    
+        precip =weather.current_observation.precip_1hr_in.toFloat()
         sendEvent( name: 'precipitation', value: weather.current_observation.precip_1hr_in, unit: "inches" )
     }
+    
     if (precip > 0) {
             
         if (currentTemp < 0) {
@@ -257,7 +248,7 @@ def poll() {
         }
         
      } else {
-        log.debug( "Precipitation: None" )
+        log.debug( "precipitation: None" )
         sendEvent( name: 'water', value: "false" )
         sendEvent( name: 'snow', value: "false" )
     }    
