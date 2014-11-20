@@ -1,4 +1,4 @@
-/**
+**
  *  Weather Station
  *
  *  Author: yracine66@gmail.com
@@ -175,24 +175,6 @@ def poll() {
     log.debug( "Forecast: ${weather.current_observation.icon}" )
     sendEvent( name: "forecast", value: weather.current_observation.icon )
 
-    
-        
-    def scale = getTemperatureScale()
-    if (scale == 'C') { 
-
-        float windSpeed=milesToKm(weather.current_observation.wind_mph.toFloat())
-        def speedFormat= String.format('%2.1f', windSpeed.round(1))
-        log.debug( "Wind Speed: ${speedFormat} kmh")
-        sendEvent( name: "wind_speed", value: speedFormat, unit: "kmh" )
-    }
-    else {
-    
-        // Wind
-        log.debug( "Wind Speed: ${weather.current_observation.wind_mph} mph")
-        sendEvent( name: "wind_speed", value: weather.current_observation.wind_mph.toInteger(), unit: "mph" )
-    
-    }
-
     log.debug( "Wind Direction: ${weather.current_observation.wind_dir}" )
     sendEvent( name: "wind_direction", value: weather.current_observation.wind_dir )
     // Set the tiles
@@ -202,7 +184,7 @@ def poll() {
     sendEvent( name: 'humidity', value: weather.current_observation.relative_humidity.tokenize('%')[0].toInteger(),
         unit: "%")
 
-    
+    def scale = getTemperatureScale()
     if (scale == 'C') { 
      
         def currentTempFormat = String.format('%2.1f', fToC(weather.current_observation.temp_f.toFloat()).round(1))
@@ -210,14 +192,21 @@ def poll() {
         log.debug( "Temperature: ${currentTempFormat}")
         log.debug( "Feels Like: ${feelTempFormat}")
         sendEvent( name: 'feels_like', value: feelTempFormat, unit: "C")
-        sendEvent( name: 'temperature', value: currentTempFormat, unit: "C")
+        sendEvent( name: 'temperature', value: feelTempFormat, unit: "C")
+        float windSpeed=milesToKm(weather.current_observation.wind_mph.toFloat())
+        def speedFormat= String.format('%2.1f', windSpeed.round(1))
+        log.debug( "Wind Speed: ${speedFormat} kmh")
+        sendEvent( name: "wind_speed", value: speedFormat, unit: "kmh" )
     }
     else {
 
         log.debug( "Feels Like: ${weather.current_observation.feelslike_f}" )
         log.debug( "Temperature: ${weather.current_observation.temp_f}")
         sendEvent( name: 'feels_like', value: weather.current_observation.feelslike_f,unit: "F" )
-        sendEvent( name: 'temperature', value: weather.current_observation.temp_f, unit: "F")
+        sendEvent( name: 'temperature', value: weather.current_observation.feelslike_f, unit: "F")
+        // Wind
+        log.debug( "Wind Speed: ${weather.current_observation.wind_mph} mph")
+        sendEvent( name: "wind_speed", value: weather.current_observation.wind_mph.toInteger(), unit: "mph" )
     }
     
     
