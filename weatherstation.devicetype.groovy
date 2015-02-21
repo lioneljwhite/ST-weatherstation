@@ -108,7 +108,7 @@ metadata {
 		}
 
 		valueTile("wind", "device.wind", decoration: "flat") {
-			state "default", label:'wind ${currentValue} mph'
+			state "default", label:'wind ${currentValue}'
 		}
 
         valueTile("windDir", "device.windDir", decoration: "flat") {
