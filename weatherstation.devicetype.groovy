@@ -12,6 +12,7 @@ metadata {
 	definition (name: "SmartWeather Station Tile v2", namespace: "smartthings", author: "SmartThings") {
 		capability "Illuminance Measurement"
 		capability "Temperature Measurement"
+		capability "Water Sensor"
 		capability "Relative Humidity Measurement"
 		capability "polling"
 
@@ -21,7 +22,7 @@ metadata {
 		attribute "timeZoneOffset", "string"
 		attribute "weather", "string"
 		attribute "wind", "string"
-                attribute "windDir", "string"
+		attribute "windDir", "string"
 		attribute "weatherIcon", "string"
 		attribute "forecastIcon", "string"
 		attribute "feelsLike", "string"
