@@ -192,30 +192,30 @@ def poll() {
 			sendMap(name: "feelsLike", value: Math.round(obs.feelslike_f as Double), unit: "F")
 			sendMap(name: "wind", value: Math.round(obs.wind_mph) as String, unit: "Mph") // as String because of bug in determining state change of 0 numbers
 			precip =obs.precip_1hr_in.toFloat()
-			sendMap( name: 'precipitation', value: obs.precip_1hr_in, unit: "inches" )
+			sendMap( name: "precipitation", value: obs.precip_1hr_in, unit: "inches" )
 		}
 
 		sendMap(name: "humidity", value: obs.relative_humidity[0..-2] as Integer, unit: "%")
 		sendMap(name: "weather", value: obs.weather)
 		sendMap(name: "windDir", value: obs.wind_dir)
 		sendMap(name: "weatherIcon", value: weatherIcon, displayed: false)
-		sendMap(name: 'uv_index', value: obs.UV.toString() )
+		sendMap(name: "uv_index", value: obs.UV.toString() )
     
 		if (precip > 0) {
 			float currentTemp =device.currentValue("temperature")
 			if(scale == "C") {
 				if (currentTemp < 0) {
-					sendMap( name: 'snow', value: "true" )
+					sendMap( name: "snow", value: "true" )
 				} else {
-					sendMap( name: 'water', value: "true" )
+					sendMap( name: "water", value: "true" )
 				}	
                 
 			} else {
             
 				if (currentTemp < 32) {
-					sendMap( name: 'snow', value: "true" )
+					sendMap( name: "snow", value: "true" )
 				} else {
-					sendMap( name: 'water', value: "true" )
+					sendMap( name: "water", value: "true" )
 				}	
 			}
         
