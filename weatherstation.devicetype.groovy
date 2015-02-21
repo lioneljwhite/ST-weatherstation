@@ -114,8 +114,7 @@ metadata {
 		valueTile("wind", "device.wind", decoration: "flat") {
 			state "default", label:'wind ${currentValue}'
 		}
-
-        valueTile("windDir", "device.windDir", decoration: "flat") {
+		valueTile("windDir", "device.windDir", decoration: "flat") {
 			state "default", label:'${currentValue}'
 		}
 
@@ -185,9 +184,9 @@ def poll() {
 		if( scale== "C") {
 			sendMap(name: "temperature", value: Math.round(obs.feelslike_c as Double), unit: "C")
 			sendMap(name: "feelsLike", value: Math.round(obs.feelslike_c as Double), unit: "C")
-        	float windSpeed=milesToKm(obs.wind_mph.toFloat())
-			sendMap(name: "wind", value: windSpeed.toString(), unit: "Kmh") // as String because of bug in determining state change of 0 numbers
-        	precip = inchToMm(obs.precip_1hr_in.toFloat())
+			float windSpeed=milesToKm(obs.wind_mph.toFloat())
+			sendMap(name: "wind", value: windSpeed.rount(1).toString(), unit: "Kmh") // as String because of bug in determining state change of 0 numbers
+			precip = inchToMm(obs.precip_1hr_in.toFloat())
 			sendMap( name: 'precipitation', value: precip.round(1).toString(), unit: "mm" )
             
 		} else {
