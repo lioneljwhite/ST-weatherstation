@@ -41,7 +41,7 @@ metadata {
 
 	tiles {
 		valueTile("temperature", "device.temperature") {
-			state "default", label:'${currentValue}°',
+			state "default", label:'Outside\n${currentValue}°',
 				backgroundColors:[
                 	[value: 19, color: "#9F8ACD"],
 					[value: 31, color: "#153591"],
