@@ -196,7 +196,7 @@ def poll() {
 
 		sendMap(name: "humidity", value: obs.relative_humidity[0..-2] as Integer, unit: "%")
 		sendMap(name: "weather", value: obs.weather)
-        sendMap(name: "windDir", value: obs.wind_dir)
+		sendMap(name: "windDir", value: obs.wind_dir)
 		sendMap(name: "weatherIcon", value: weatherIcon, displayed: false)
 		sendMap(name: 'uv_index', value: obs.UV.toString() )
     
@@ -244,13 +244,12 @@ def poll() {
 
 		def sunriseDate = ltf.parse("${today} ${a.sunrise.hour}:${a.sunrise.minute}")
 		def sunsetDate = ltf.parse("${today} ${a.sunset.hour}:${a.sunset.minute}")
-
-        def tf = new java.text.SimpleDateFormat("h:mm a")
-        tf.setTimeZone(TimeZone.getTimeZone("GMT${obs.local_tz_offset}"))
-        def localSunrise = "${tf.format(sunriseDate)}"
-        def localSunset = "${tf.format(sunsetDate)}"
-        sendMap(name: "localSunrise", value: localSunrise, descriptionText: "Sunrise today is at $localSunrise")
-        sendMap(name: "localSunset", value: localSunset, descriptionText: "Sunset today at is $localSunset")
+		def tf = new java.text.SimpleDateFormat("h:mm a")
+		tf.setTimeZone(TimeZone.getTimeZone("GMT${obs.local_tz_offset}"))
+		def localSunrise = "${tf.format(sunriseDate)}"
+		def localSunset = "${tf.format(sunsetDate)}"
+		sendMap(name: "localSunrise", value: localSunrise, descriptionText: "Sunrise today is at $localSunrise")
+		sendMap(name: "localSunset", value: localSunset, descriptionText: "Sunset today at is $localSunset")
 
 		sendMap(name: "illuminance", value: estimateLux(sunriseDate, sunsetDate, weatherIcon))
 
@@ -344,15 +343,14 @@ private sendMap(map) {
 }
 
 def milesToKm(distance) {
-    return (distance * 1.609344)
+	return (distance * 1.609344)
 }
 
 
 def inchToMm(len) {
-    return (len * 25.400)
-
-
+	return (len * 25.400)
 }
+
 private estimateLux(sunriseDate, sunsetDate, weatherIcon) {
 	def lux = 0
 	def now = new Date().time
