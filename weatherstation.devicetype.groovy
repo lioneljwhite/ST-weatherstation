@@ -32,6 +32,9 @@ metadata {
 		attribute "sunriseDate", "string"
 		attribute "sunsetDate", "string"
 		attribute "uv_index", "string" 
+		attribute "snow", "string"
+		attribute "water", "string"
+		attribute "precipitation", "string" 
 
 		command "refresh"
 	}
