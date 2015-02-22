@@ -123,7 +123,7 @@ metadata {
 			state "default", label:'${currentValue}'
 		}
 
-		valueTile("city", "device.city", decoration: "flat") {
+		valueTile("city", "device.city", width: 3, height: 1, decoration: "flat") {
 			state "default", label:'${currentValue}'
 		}
 
@@ -163,8 +163,8 @@ metadata {
 			state "precipitation", label: 'Precip\n ${currentValue}'
 		}
 		main(["temperature", "weatherIcon","feelsLike"])
-		details(["temperature", "weatherIcon","feelsLike","wind","windDir","weather", "city","percentPrecip", "refresh","alert", "humidity","rise","set","light",
-			"water","precipitation", "uv_index"])}
+		details(["temperature", "weatherIcon","feelsLike","wind","windDir","weather", "percentPrecip","alert", "humidity","refresh",
+			"rise","set","light","city","water","precipitation", "uv_index"])}
 }
 
 // parse events into attributes
@@ -401,4 +401,3 @@ private estimateLux(sunriseDate, sunsetDate, weatherIcon) {
 
 	lux
 }
-
