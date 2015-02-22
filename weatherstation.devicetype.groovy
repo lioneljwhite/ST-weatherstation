@@ -3,7 +3,8 @@
  *
  *  Author: SmartThings
  *      Modified by Y.Racine for better metric support. Also added UV index, precipitation, and snow/water tiles
- *
+ *      LinkedIn profile: ca.linkedin.com/pub/yves-racine-m-sc-a/0/406/4b/
+ **
  *  Date: 2014-10-29
  */
 // for the UI
