@@ -209,22 +209,26 @@ def poll() {
 			if(scale == "C") {
 				if (currentTemp < 0) {
 					sendMap( name: "snow", value: "true" )
+					sendMap( name: "water", value: "dry" )
 				} else {
-					sendMap( name: "water", value: "true" )
+					sendMap( name: "water", value: "wet" )
+					sendMap( name: "snow", value: "false" )
 				}	
                 
 			} else {
             
 				if (currentTemp < 32) {
 					sendMap( name: "snow", value: "true" )
+					sendMap( name: "water", value: "dry" )
 				} else {
-					sendMap( name: "water", value: "true" )
+					sendMap( name: "water", value: "wet" )
+					sendMap( name: "snow", value: "false" )
 				}	
 			}
         
 		} else {
 			log.debug( "precipitation: None" )
-			sendMap( name: 'water', value: "false" )
+			sendMap( name: 'water', value: "dry" )
 			sendMap( name: 'snow', value: "false" )	
 		}    
 
