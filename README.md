@@ -15,14 +15,14 @@ b) Hit the "From Code" tab on the left corner
 
 c) Copy and paste the code from device-type.weatherstation.groovy under https://github.com/yracine/device-type.weatherstation
 
-e) Hit the create button at the bottom
+d) Hit the create button at the bottom
 
-f) Hit the "publish/for me" button at the top right corner (in the code window)
+e) Hit the "publish/for me" button at the top right corner (in the code window)
 
 
 2. Create a new device (https://graph.api.smartthings.com/device/list)
     * Name: Your choice
-    * Device Network Id: WEATHERSTATION-001 (increase for each weather station you add)
+    * Device Network Id: WEATHERSTATION-01 (increase for each weather station you add)
     * Type: Smart WeatherStation Tile (should be near the last option)
     * Location: Choose the correct location
     * Hub/Group: Choose a hub (this will autopopulate the zipcode)
