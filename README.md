@@ -9,6 +9,7 @@ automatically use your Hub's (or pre-defined) location for the current condition
 ## Installation
 
 1. Create a new device type (https://graph.api.smartthings.com/ide/devices)
+
 a) Hit the "+New SmartDevice" at the top right corner, choose a device name
 
 b) Hit the "From Code" tab on the left corner
