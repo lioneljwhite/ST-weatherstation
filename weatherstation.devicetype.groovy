@@ -156,8 +156,8 @@ metadata {
 		}
 		standardTile("water", "device.water", decoration: "flat",inactiveLabel: false) {
         	state "default", label: 'updating...', icon: "st.unknown.unknown.unknown"
-			state "true",    label:'Wet',          icon: "st.alarm.water.wet",        backgroundColor:"#ff9999"
-			state "false",   label:'Dry',          icon: "st.alarm.water.dry",        backgroundColor:"#99ff99"
+			state "wet",    label:'Wet',          icon: "st.alarm.water.wet",        backgroundColor:"#ff9999"
+			state "dry",    label:'Dry',          icon: "st.alarm.water.dry",        backgroundColor:"#99ff99"
 		}
 		valueTile("precipitation", "device.precipitation", inactiveLabel: false, width: 1, height: 1,decoration: "flat") {
 			state "precipitation", label: 'Precip\n ${currentValue}'
