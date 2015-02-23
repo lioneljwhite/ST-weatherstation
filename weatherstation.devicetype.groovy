@@ -157,6 +157,7 @@ metadata {
 		standardTile("water", "device.water", decoration: "flat",inactiveLabel: false) {
         	state "default", label: 'updating...', icon: "st.unknown.unknown.unknown"
 			state "wet",    label:'Wet',          icon: "st.alarm.water.wet",        backgroundColor:"#ff9999"
+			state "snow",   label:'Snow',          icon: "st.alarm.water.wet",       backgroundColor:"#99ff99"
 			state "dry",    label:'Dry',          icon: "st.alarm.water.dry",        backgroundColor:"#99ff99"
 		}
 		valueTile("precipitation", "device.precipitation", inactiveLabel: false, width: 1, height: 1,decoration: "flat") {
@@ -208,8 +209,8 @@ def poll() {
 			float currentTemp =device.currentValue("temperature")
 			if(scale == "C") {
 				if (currentTemp < 0) {
+					sendMap( name: "water", value: "snow" )
 					sendMap( name: "snow", value: "true" )
-					sendMap( name: "water", value: "dry" )
 				} else {
 					sendMap( name: "water", value: "wet" )
 					sendMap( name: "snow", value: "false" )
@@ -218,8 +219,8 @@ def poll() {
 			} else {
             
 				if (currentTemp < 32) {
+					sendMap( name: "water", value: "snow" )
 					sendMap( name: "snow", value: "true" )
-					sendMap( name: "water", value: "dry" )
 				} else {
 					sendMap( name: "water", value: "wet" )
 					sendMap( name: "snow", value: "false" )
