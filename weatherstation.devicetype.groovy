@@ -140,11 +140,11 @@ metadata {
 		}
 
 		valueTile("rise", "device.localSunrise", decoration: "flat") {
-			state "default", label:'${currentValue}'
+			state "default", label:'Sunrise\n ${currentValue}'
 		}
 
 		valueTile("set", "device.localSunset", decoration: "flat") {
-			state "default", label:'${currentValue}'
+			state "default", label:'Sunset\n ${currentValue}'
 		}
 
 		valueTile("light", "device.illuminance", decoration: "flat") {
