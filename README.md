@@ -6,6 +6,21 @@ http://build.smartthings.com/projects/weatherstation/
 This is an internet-based weather station SmartDevice for your SmartThings Hub.  This device will
 automatically use your Hub's (or pre-defined) location for the current conditions.
 
+=====================
+PREREQUISITES
+=====================
+
+- Developer access to SmartThings (http://graph.api.smartthings.com/)
+- Determine your shard, please consult this thread:
+
+https://community.smartthings.com/t/faq-how-to-find-out-what-shard-cloud-slice-ide-url-your-account-location-is-on/53923
+
+If you are on a different shard, you need to change the links below for your right shard. 
+As an example, in the North America,
+
+replace https://graph.api.smartthings.com/ide/devices by https://graph-na02-useast1.api.smartthings.com
+
+
 ## Installation
 
 1. Create a new device type (https://graph.api.smartthings.com/ide/devices)
