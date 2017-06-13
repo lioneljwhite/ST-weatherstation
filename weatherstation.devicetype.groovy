@@ -128,7 +128,7 @@ metadata {
 		}
 
 		valueTile("percentPrecip", "device.percentPrecip", decoration: "flat") {
-			state "default", label:'${currentValue}% precip'
+			state "default", label:'${currentValue}% PoP'
 		}
 
 		standardTile("refresh", "device.weather", decoration: "flat") {
@@ -140,11 +140,11 @@ metadata {
 		}
 
 		valueTile("rise", "device.localSunrise", decoration: "flat") {
-			state "default", label:'Sunrise\n ${currentValue}'
+			state "default", label:'Sunrise ${currentValue}'
 		}
 
 		valueTile("set", "device.localSunset", decoration: "flat") {
-			state "default", label:'Sunset\n ${currentValue}'
+			state "default", label:'Sunset ${currentValue}'
 		}
 
 		valueTile("light", "device.illuminance", decoration: "flat") {
@@ -161,7 +161,7 @@ metadata {
 			state "dry",    label:'Dry',          icon: "st.alarm.water.dry",        backgroundColor:"#99ff99"
 		}
 		valueTile("precipitation", "device.precipitation", inactiveLabel: false, width: 1, height: 1,decoration: "flat") {
-			state "precipitation", label: 'Precip\n ${currentValue}'
+			state "precipitation", label: 'Rain ${currentValue}'
 		}
 		main(["temperature", "weatherIcon","feelsLike"])
 		details(["temperature", "weatherIcon","feelsLike","wind","windDir","weather", "percentPrecip","alert", "humidity","refresh",
