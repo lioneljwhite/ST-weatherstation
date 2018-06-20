@@ -6,9 +6,8 @@ http://build.smartthings.com/projects/weatherstation/
 This is an internet-based weather station SmartDevice for your SmartThings Hub.  This device will
 automatically use your Hub's (or pre-defined) location for the current conditions.
 
-=====================
-PREREQUISITES
-=====================
+
+# PREREQUISITES
 
 - Developer access to SmartThings (http://graph.api.smartthings.com/)
 - Location set for your ST account 
@@ -25,7 +24,7 @@ As an example, in North America,
 replace https://graph.api.smartthings.com/ide/devices by https://graph-na02-useast1.api.smartthings.com
 
 
-## Installation
+# Installation
 
 1. Create a new device type (https://graph.api.smartthings.com/ide/devices)
 
