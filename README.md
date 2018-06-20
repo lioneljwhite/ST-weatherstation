@@ -27,7 +27,9 @@ replace https://graph.api.smartthings.com/ide/devices by https://graph-na02-usea
 
 # INSTALLATION
 
-1. Create a new device type (https://graph.api.smartthings.com/ide/devices)
+1. Create a new device type under the IDE 
+
+Go to https://graph.api.smartthings.com/ide/devices (or whatever your shard is and click on My Device Handlers in the IDE's top menu)
 
 a) Hit the "+New SmartDevice" at the top right corner, choose a device name
 
@@ -40,7 +42,7 @@ d) Hit the create button at the bottom
 e) Hit the "publish/for me" button at the top right corner (in the code window)
 
 
-2. Create a new device (https://graph.api.smartthings.com/device/list)
+2. Create a new device (https://graph.api.smartthings.com/device/list or whatever your shard is and click on My Devices in the IDE's top menu)
     * Name: Your choice
     * Device Network Id: WEATHERSTATION-01 (increase for each weather station you add)
     * Type: Smart WeatherStation Tile (should be near the last option)
