@@ -42,7 +42,8 @@ d) Hit the create button at the bottom
 e) Hit the "publish/for me" button at the top right corner (in the code window)
 
 
-2. Create a new device (https://graph.api.smartthings.com/device/list or whatever your shard is and click on My Devices in the IDE's top menu)
+2. Create a new device 
+Go to https://graph.api.smartthings.com/device/list  (or whatever your shard is and click on My Devices in the IDE's top menu)
     * Name: Your choice
     * Device Network Id: WEATHERSTATION-01 (increase for each weather station you add)
     * Type: Smart WeatherStation Tile (should be near the last option)
